@@ -21,8 +21,13 @@ the rest conversationally.
 
 ## Status (update the checkboxes as you complete each item)
 
-- [ ] Fill backend guidelines
+- [x] Fill backend guidelines
 - [ ] Add code examples
+
+The repository currently contains an empty Rust workspace with no application
+crate or tests. The backend guides now include repository-backed configuration
+examples and explicitly record which runtime conventions are not established;
+the code-example item remains open until real backend code exists.
 
 ---
 

@@ -1,51 +1,59 @@
 # Database Guidelines
 
-> Database patterns and conventions for this project.
+> The persistence conventions currently evidenced by the repository.
 
 ---
 
-## Overview
+## Current State
 
-<!--
-Document your project's database conventions here.
+Sunmao has no persistence implementation yet. The workspace has no Rust crates,
+database dependencies, schema files, migrations, query code, or database tests.
+Consequently, the repository has not selected an ORM or query library and has
+no established transaction, table, column, index, or migration convention.
 
-Questions to answer:
-- What ORM/query library do you use?
-- How are migrations managed?
-- What are the naming conventions for tables/columns?
-- How do you handle transactions?
--->
+The relevant manifest is intentionally empty:
 
-(To be filled by the team)
+```toml
+# Cargo.toml
+[workspace.dependencies]
+```
 
----
+This is evidence of an unmade decision, not permission to assume SQLx, Diesel,
+SeaORM, an embedded store, or a particular database engine.
 
 ## Query Patterns
 
-<!-- How should queries be written? Batch operations? -->
-
-(To be filled by the team)
-
----
+No query pattern exists. Do not introduce a generic repository layer, database
+trait, connection pool wrapper, or transaction helper solely to conform to an
+imagined project architecture. A persistence feature should establish only the
+abstractions its concrete use cases require.
 
 ## Migrations
 
-<!-- How to create and run migrations -->
+There is no migration directory or migration command. The first task that adds
+persistent schema must define and verify:
 
-(To be filled by the team)
+- the database engine and Rust integration;
+- the canonical migration location and naming format;
+- how migrations are created, applied, and rolled back;
+- whether startup applies migrations or deployment runs them separately;
+- how schema changes are tested.
 
----
+Record the resulting commands and at least two real migration or query paths in
+this file as part of that same task.
 
-## Naming Conventions
+## Naming And Transactions
 
-<!-- Table names, column names, index names -->
+Table, column, constraint, index, and transaction-boundary conventions are not
+yet established. Keep names native to the selected database and domain during
+the first implementation, then document the repeated pattern rather than
+inventing one in advance.
 
-(To be filled by the team)
+## Unsupported Assumptions
 
----
-
-## Common Mistakes
-
-<!-- Database-related mistakes your team has made -->
-
-(To be filled by the team)
+- Do not cite generated `.trellis/` storage as application persistence.
+- Do not add a database dependency only to satisfy this specification.
+- Do not claim migrations are covered by `just test`; there are currently no
+  database tests or migration recipes.
+- Do not describe a naming or transaction rule without a repository path that
+  demonstrates it.
