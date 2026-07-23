@@ -1,47 +1,7 @@
 # sunmao
 
-> 榫卯/Sun Mao/Mortise
+***WIP***, still planning.
 
-An extensible, distributed orchestration engine built around state machines.
+> *榫卯/Sun Mao/Mortise*: Seamlessly Interlocking the Future of Distributed Systems.
 
-## Dev Setup
-
-```bash
-# Environment(Nix)
-apt install -y direnv
-echo 'use flake' > .envrc
-direnv allow
-
-# Environment
-apt install -y rustup cargo-binstall protobuf-compiler pre-commit just
-
-# Dev Tools
-just install-dev
-
-# AI(Optional)
-npm install -g @mindfoldhq/trellis@latest @colbymchenry/codegraph
-trellis init -u <your-name>
-codegraph install
-codegraph init
-
-# Build
-just build
-
-# Release Build
-just release
-
-# Check
-just check
-
-# Format
-just fmt
-
-# Test
-just test
-
-# Coverage
-just coverage
-
-# Update
-just update
-```
+**Sunmao** is a Rust-based distributed virtual machine that completely decouples computation models from infrastructure, enabling infinite model extensibility without modifying the core engine.
